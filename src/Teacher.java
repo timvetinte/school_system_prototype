@@ -1,5 +1,4 @@
 import java.io.Serializable;
-import java.lang.annotation.Target;
 
 public class Teacher implements Serializable {
 

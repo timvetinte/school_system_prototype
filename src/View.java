@@ -51,8 +51,10 @@ public class View {
         if (!course.getClassList().isEmpty()) {
             for (Student s : course.getClassList()) {
                 System.out.println(index + ". " + s.getFirstName() + " " + s.getLastName());
+                index++;
             }
             System.out.println("--------------------");
+            index = 1;
         } else {
             System.out.println("Course is empty, add students.");
         }

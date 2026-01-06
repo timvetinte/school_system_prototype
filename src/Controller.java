@@ -101,6 +101,7 @@ public class Controller {
                         if (selection2 <= model.studentList.size() && selection2 > 0) {
                             break;
                         } else if (selection2 == (model.studentList.size() + 1)) {
+                            view.printMessage("Exiting to main menu.");
                             currentState = state.MAIN_MENU;
                             return;
                         }
@@ -111,6 +112,7 @@ public class Controller {
                     currentCourse.getClassList().add(currentStudent);
                     model.saveList();
                     view.printMessage(currentStudent.getFirstName() + " was added to the " + currentCourse.getCourseName() + " course.");
+                    return;
                 }
                 case 2 -> {
                     currentState = state.ASSIGN_COURSE_TO_TEACHER;
@@ -118,7 +120,7 @@ public class Controller {
                 }
 
                 case 3 -> {
-                    System.out.println("Exiting to main menu");
+                    System.out.println("Exiting to main menu.");
                     currentState = state.MAIN_MENU;
                     return;
                 }
@@ -132,7 +134,7 @@ public class Controller {
 
     public void students() {
         view.printMessage("Select one of the numbers below");
-        view.printMessage("1. Search for student 2. Add a new student");
+        view.printMessage("1. Search for student 2. Add a new student 3. Back");
 
         int selection = scanner.nextInt();
 
@@ -146,6 +148,10 @@ public class Controller {
                 }
             }
             case 2 -> currentState = state.ADDING_STUDENT;
+            case 3 -> {
+                view.printMessage("Exiting to main menu.");
+                currentState = state.MAIN_MENU;
+            }
             default -> view.printMessage("Not a valid option");
         }
     }
@@ -165,7 +171,10 @@ public class Controller {
                     view.printMessage("No teachers exist.");
                 }
             }
-            case 3 -> currentState = state.MAIN_MENU;
+            case 3 -> {
+                view.printMessage("Exiting to main menu.");
+                currentState = state.MAIN_MENU;
+            }
             default -> view.printMessage("Not a valid option");
         }
     }
@@ -195,7 +204,10 @@ public class Controller {
                 view.printMessage(email + " changed their email to: " + currentStudent.getEmailAdress());
                 model.saveList();
             }
-            case 4 -> currentState = state.MAIN_MENU;
+            case 4 -> {
+                view.printMessage("Exiting to main menu.");
+                currentState = state.MAIN_MENU;
+            }
         }
     }
 
@@ -236,7 +248,10 @@ public class Controller {
                                 currentState = state.MAIN_MENU;
                             }
                         }
-                        case 2 -> currentState = state.MAIN_MENU;
+                        case 2 -> {
+                            view.printMessage("Exiting to main menu.");
+                            currentState = state.MAIN_MENU;
+                        }
                         default -> view.printMessage("Not a valid option");
 
                     }
@@ -324,7 +339,10 @@ public class Controller {
 
                     }
                 }
-                case 4 -> currentState = state.MAIN_MENU;
+                case 4 -> {
+                    view.printMessage("Exiting to main menu.");
+                    currentState = state.MAIN_MENU;
+                }
 
 
             }
@@ -397,7 +415,10 @@ public class Controller {
                 view.printMessage(email + " changed their email to: " + currentTeacher.getEmailAdress());
                 model.saveList();
             }
-            case 4 -> currentState = state.MAIN_MENU;
+            case 4 -> {
+                view.printMessage("Exiting to main menu.");
+                currentState = state.MAIN_MENU;
+            }
         }
     }
 }
