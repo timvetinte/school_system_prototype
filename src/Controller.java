@@ -11,7 +11,6 @@ public class Controller {
     private Course currentCourse;
     private Model model;
     private View view;
-    private ArrayList<Grade> gradeList;
 
     private enum state {
         LOGIN,
@@ -212,10 +211,12 @@ public class Controller {
                     currentStudent = currentCourse.getClassList().get(selection3 - 1);
 
                     view.printMessage("Enter " + currentStudent.getFirstName() + "'s grade.");
+                    scanner.nextLine();
                     String grade = scanner.nextLine();
                     currentStudent.addGrade(currentCourse, grade);
 
                     currentState = state.COURSES;
+                    return;
 
                 } else {
                     view.printMessage("Not a valid option.");
