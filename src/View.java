@@ -94,19 +94,21 @@ public class View {
         int index = 1;
         boolean studentHasCourse = false;
         for (Course c : model.courses) {
-            if (model.courses.contains(student)) {
+            if (c.getClassList().contains(student)) {
                 studentHasCourse = true;
             }
         }
         if (studentHasCourse) {
+            System.out.println(student.getFirstName() + " is enrolled in: ");
             for (Course c : model.courses) {
-                if (model.courses.contains(student)) {
+                if (c.getClassList().contains(student)) {
                     System.out.println(index + ". " + c.getCourseName());
                     index++;
                 }
             }
+            System.out.println("-------------\n");
+        } else {
+            System.out.println("Student has no courses.\n");
         }
-        index = 1;
-        studentHasCourse = false;
     }
 }

@@ -64,6 +64,7 @@ public class Controller {
         int selection;
         try{
             selection = scanner.nextInt();
+            scanner.nextLine();
         } catch (InputMismatchException e){
             scanner.nextLine();
             return 0;
@@ -377,12 +378,12 @@ public class Controller {
 
             currentStudent = model.studentList.get(selection - 1);
             view.printStudentInfo(currentStudent);
-            view.printMessage("1. Edit student info 2. Remove student 3. Back");
+            view.printMessage("1. Edit student info 2. Remove student 3. Show students courses 4. Back");
             selection = pseudoScanner();
             switch (selection) {
                 case 0 -> {
                     view.printStudentInfo(currentStudent);
-                    view.printMessage("1. Edit student info 2. Remove student 3. Back");
+                    view.printMessage("1. Edit student info 2. Remove student 3. Show students courses 4. Back");
                 }
                 case 1 -> currentState = state.EDITING_STUDENT;
 
@@ -412,6 +413,11 @@ public class Controller {
                     }
                 }
                 case 3 -> {
+                    view.studentFindCourses(currentStudent, model);
+                    view.printMessage("Press enter to exit.");
+                    scanner.nextLine();
+                }
+                case 4 -> {
                 }
 
 
