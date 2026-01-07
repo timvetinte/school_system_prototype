@@ -63,7 +63,7 @@ public class View {
     public void printCourseStudents(Course course){
         if (!course.getClassList().isEmpty()) {
             for (Student s : course.getClassList()) {
-                System.out.println(index + ". " + s.getFirstName() + " " + s.getLastName());
+                System.out.println(index + ". " + s.getFirstName() + " " + s.getLastName() + " " + s.getGrade(course));
                 index++;
             }
             index = 1;

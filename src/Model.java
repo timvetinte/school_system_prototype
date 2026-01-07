@@ -7,7 +7,6 @@ public class Model {
     ArrayList<Student> studentList = new ArrayList();
     ArrayList<Teacher> teacherList = new ArrayList<>();
     ArrayList<Course> courses = new ArrayList<>();
-    ArrayList <Grade> gradeList = new ArrayList<>();
 
 
     File file = new File("src/list.ser");

@@ -2,22 +2,12 @@ import java.io.Serializable;
 
 public class Grade implements Serializable {
 
-    private String stringGrade;
     private Course course;
-    private Student student;
+    private String grade;
 
-    public Grade(Student student, String stringGrade, Course course){
-        this.student=student;
-        this.stringGrade=stringGrade;
+    public Grade(Course course, String grade){
         this.course=course;
-    }
-
-    public String getStringGrade() {
-        return stringGrade;
-    }
-
-    public void setStringGrade(String stringGrade) {
-        this.stringGrade = stringGrade;
+        this.grade=grade;
     }
 
     public Course getCourse() {
@@ -28,7 +18,11 @@ public class Grade implements Serializable {
         this.course = course;
     }
 
-    public Student getStudent() {
-        return student;
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

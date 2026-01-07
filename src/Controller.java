@@ -20,6 +20,7 @@ public class Controller {
         ASSIGN_TEACHER_TO_COURSE,
         ASSIGN_COURSE_TO_TEACHER,
         STUDENTS,
+        GRADE_STUDENT,
         TEACHERS,
         ADDING_TEACHER,
         SELECT_TEACHER,
@@ -45,6 +46,7 @@ public class Controller {
                 case LOGIN -> login();
                 case MAIN_MENU -> mainMenu();
                 case STUDENTS -> students();
+                case GRADE_STUDENT -> gradeStudent();
                 case COURSES -> courses();
                 case ASSIGN_TEACHER_TO_COURSE -> assignTeacherToCourse();
                 case ASSIGN_COURSE_TO_TEACHER -> assignCourseToTeacher();
@@ -180,23 +182,8 @@ public class Controller {
                 }
 
                 case 3 -> {
-                    if (currentCourse.getClassList().isEmpty()) {
-                        view.printCourseStudents(currentCourse);
-                    } else {
-                        view.printCourseStudents(currentCourse);
-                        while(true) {
-                            view.printMessage("Input a number matching a student.");
-                            int selection3 = pseudoScanner();
-                            if (selection3 > currentCourse.getClassList().size() && selection3 > 0) {
-                                currentStudent = currentCourse.getClassList().get(selection3 - 1);
-                                view.printMessage("Enter " + currentStudent.getFirstName() + "'s grade.");
-                                String grade = scanner.nextLine();
-                                model.gradeList.add(new Grade(currentStudent, grade, currentCourse));
-                            } else {
-                                view.printMessage("Not a valid option.");
-                            }
-                        }
-                    }
+                    currentState = state.GRADE_STUDENT;
+                    return;
                 }
 
                 case 4 -> {
@@ -208,6 +195,31 @@ public class Controller {
                 }
 
 
+            }
+        }
+    }
+
+    public void gradeStudent(){
+        if (currentCourse.getClassList().isEmpty()) {
+            view.printCourseStudents(currentCourse);
+        } else {
+            view.printCourseStudents(currentCourse);
+            while(true) {
+                view.printMessage("Input a number matching a student.");
+                int selection3 = pseudoScanner();
+
+                if (selection3 <= currentCourse.getClassList().size() && selection3 > 0) {
+                    currentStudent = currentCourse.getClassList().get(selection3 - 1);
+
+                    view.printMessage("Enter " + currentStudent.getFirstName() + "'s grade.");
+                    String grade = scanner.nextLine();
+                    currentStudent.addGrade(currentCourse, grade);
+
+                    currentState = state.COURSES;
+
+                } else {
+                    view.printMessage("Not a valid option.");
+                }
             }
         }
     }
