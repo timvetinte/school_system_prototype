@@ -43,6 +43,7 @@ public class View {
     }
 
     public void printCourseInfo(Course course) {
+        System.out.println(course.getCourseName());
         if (course.getTeacher() != null) {
             System.out.println("Teacher: " + course.getTeacher().getFirstName() + " " + course.getTeacher().getLastName());
         } else {
