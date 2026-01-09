@@ -6,20 +6,20 @@ public class Student implements Serializable {
 
     private String firstName;
     private String lastName;
-    private String emailAdress;
+    private String emailAddress;
     private int studentID;
     private List<Grade> grades;
 
-    public Student(String firstName, String lastName, String emailAdress, int studentID) {
+    public Student(String firstName, String lastName, String emailAddress, int studentID) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.emailAdress = emailAdress;
+        this.emailAddress = emailAddress;
         this.studentID = studentID;
         this.grades = new ArrayList<>();
     }
 
-    public static Student createStudent(String firstName, String lastName, String emailAdress, int studentID) {
-        return new Student(firstName, lastName, emailAdress, studentID);
+    public static Student createStudent(String firstName, String lastName, String emailAddress, int studentID) {
+        return new Student(firstName, lastName, emailAddress, studentID);
     }
 
     public void addGrade(Course course, String grade) {
@@ -51,8 +51,8 @@ public class Student implements Serializable {
         return lastName;
     }
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
     public int getStudentID() {
@@ -67,8 +67,8 @@ public class Student implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public void setStudentID(int studentID) {

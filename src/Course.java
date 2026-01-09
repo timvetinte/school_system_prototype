@@ -12,19 +12,23 @@ public class Course implements Serializable {
     public Course(String courseName, int courseSize, Teacher teacher) {
         this.courseName = courseName;
         this.classList = new ArrayList<>();
-        this.courseSize=courseSize;
-        this.teacher=teacher;
+        this.courseSize = courseSize;
+        this.teacher = teacher;
 
     }
 
-    public boolean addStudentToCourse(Student student){
-        if (classList.size()<this.getCourseSize()) {
+    public boolean addStudentToCourse(Student student) {
+        if (classList.size() < this.getCourseSize()) {
             classList.add(student);
             return true;
         } else {
-        return false;
+            return false;
         }
     }
+
+
+
+
 
     public void removeStudent(Student student){
         classList.remove(student);

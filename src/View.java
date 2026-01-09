@@ -6,6 +6,7 @@ public class View {
     }
 
     private int index = 1;
+    boolean firstIntro = true;
 
     public void printAllStudents(Model model) {
         if (model.getStudentList() != null) {
@@ -76,18 +77,60 @@ public class View {
     public void printStudentInfo(Student student) {
         System.out.println("Selected student: " + student.getFirstName() + " " + student.getLastName());
         System.out.println("Student ID: " + student.getStudentID());
-        System.out.println("Student email: " + student.getEmailAdress());
+        System.out.println("Student email: " + student.getEmailAddress());
 
     }
 
     public void printTeacherInfo(Teacher teacher) {
         System.out.println("Selected Teacher: " + teacher.getFirstName() + " " + teacher.getLastName());
-        System.out.println("Student email: " + teacher.getEmailAdress());
+        System.out.println("Teacher's email: " + teacher.getEmailAddress());
 
     }
 
     public void printMessage(String messageText) {
         System.out.println(messageText);
+
+    }
+
+    public void printOnOneLine(String messageText){
+        System.out.print(messageText);
+    }
+
+    public void printIntro() throws InterruptedException {
+
+        if (firstIntro) {
+            int sleepAmount = 650;
+            System.out.println("\n\n\n");
+            System.out.println("▄▖  ▌     ▜              ");
+            Thread.sleep(sleepAmount);
+            System.out.println("▚ ▛▘▛▌▛▌▛▌▐              ");
+            Thread.sleep(sleepAmount);
+            System.out.println("▄▌▙▖▌▌▙▌▙▌▐▖             ");
+            System.out.println("                         ");
+            Thread.sleep(sleepAmount);
+            System.out.println("▄▖ ▌   ▘    ▄▖    ▗      ");
+            Thread.sleep(sleepAmount);
+            System.out.println("▌▌▛▌▛▛▌▌▛▌▄▖▚ ▌▌▛▘▜▘█▌▛▛▌");
+            Thread.sleep(sleepAmount);
+            System.out.println("▛▌▙▌▌▌▌▌▌▌  ▄▌▙▌▄▌▐▖▙▖▌▌▌");
+            Thread.sleep(sleepAmount);
+            System.out.println("              ▄▌         ");
+            Thread.sleep(sleepAmount);
+            System.out.println();
+            firstIntro=false;
+        } else {
+            System.out.println("\n\n\n");
+            System.out.println("▄▖  ▌     ▜              ");
+            System.out.println("▚ ▛▘▛▌▛▌▛▌▐              ");
+            System.out.println("▄▌▙▖▌▌▙▌▙▌▐▖             ");
+            System.out.println("                         ");
+            System.out.println("▄▖ ▌   ▘    ▄▖    ▗      ");
+            System.out.println("▌▌▛▌▛▛▌▌▛▌▄▖▚ ▌▌▛▘▜▘█▌▛▛▌");
+            System.out.println("▛▌▙▌▌▌▌▌▌▌  ▄▌▙▌▄▌▐▖▙▖▌▌▌");
+            System.out.println("              ▄▌         ");
+            System.out.println();
+            Thread.sleep(500);
+        }
 
     }
 
@@ -103,11 +146,11 @@ public class View {
             System.out.println(student.getFirstName() + " is enrolled in: ");
             for (Course c : model.courses) {
                 if (c.getClassList().contains(student)) {
-                    System.out.println(index + ". " + c.getCourseName());
+                    System.out.println(index + ". " + c.getCourseName() + " " + student.getGrade(c));
                     index++;
                 }
             }
-            System.out.println("-------------\n");
+            System.out.println("-------------");
         } else {
             System.out.println("Student has no courses.\n");
         }

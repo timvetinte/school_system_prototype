@@ -4,26 +4,20 @@ public class Teacher extends Person implements Serializable {
 
     String firstName;
     String lastName;
-    String emailAdress;
-    String Password;
+    String emailAddress;
+    String password;
+    Boolean admin;
 
-    public Teacher(String firstName, String lastName, String emailAdress){
+    public Teacher(String firstName, String lastName, String emailAddress, String password, Boolean admin){
         this.firstName=firstName;
         this.lastName=lastName;
-        this.emailAdress=emailAdress;
-
+        this.emailAddress=emailAddress;
+        this.password=password;
+        this.admin=admin;
     }
 
-    public Teacher(String firstName, String lastName, String emailAdress, String Password){
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.emailAdress=emailAdress;
-        this.Password=Password;
-
-    }
-
-    public static Teacher createTeacher (String firstName, String lastName, String emailAdress){
-        return new Teacher(firstName, lastName, emailAdress);
+    public static Teacher createTeacher (String firstName, String lastName, String emailAddress, Boolean admin){
+        return new Teacher(firstName, lastName, emailAddress, "Password", false);
     }
 
     public String getFirstName() {
@@ -34,8 +28,8 @@ public class Teacher extends Person implements Serializable {
         return lastName;
     }
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
     public void setFirstName(String firstName) {
@@ -46,15 +40,19 @@ public class Teacher extends Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        this.password = password;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
+    }
+
+    public Boolean isAdmin() {
+        return admin;
     }
 }

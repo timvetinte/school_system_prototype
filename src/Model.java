@@ -86,13 +86,22 @@ public class Model {
         return teacherList;
     }
 
+    public void removeStudentFromAllCourses(Student student) {
+
+        for (Course c : courses) {
+            if (c.getClassList().contains(student)) {
+                c.getClassList().remove(student);
+            }
+        }
+    }
+
     public Model(){
 
         courses.add(new Course("Math", 20, null));
         courses.add(new Course("Java", 20, null));
         courses.add(new Course("Biology", 20, null));
         courses.add(new Course("Design-patterns", 20, null));
-        teacherList.add(new Teacher("Admin", "Login", "Admin.login@skola.se", "Password"));
+        teacherList.add(new Teacher("Admin", "Login", "Admin.login@skola.se", "Password", true));
 
 
 
