@@ -1,12 +1,13 @@
 public class View {
 
-
-    public View(Model model) {
-
-    }
-
     private int index = 1;
     boolean firstIntro = true;
+    Model model;
+
+    public View(Model model) {
+        this.model = model;
+    }
+
 
     public void printAllStudents(Model model) {
         if (model.getStudentList() != null) {
@@ -21,7 +22,7 @@ public class View {
         }
     }
 
-    public void printAllCourses(Model model) {
+    public void printAllCourses() {
         for (Course c : model.getCourses()) {
             System.out.println(index + ". " + c.getCourseName());
             index++;
@@ -30,7 +31,7 @@ public class View {
         index = 1;
     }
 
-    public void printAllTeachers(Model model) {
+    public void printAllTeachers() {
         if (model.getTeacherList() != null) {
             for (Teacher t : model.getTeacherList()) {
                 System.out.println(index + ". " + t.getFirstName() + " " + t.getLastName());
@@ -62,7 +63,7 @@ public class View {
         }
     }
 
-    public void printCourseStudents(Course course){
+    public void printCourseStudents(Course course) {
         if (!course.getClassList().isEmpty()) {
             for (Student s : course.getClassList()) {
                 System.out.println(index + ". " + s.getFirstName() + " " + s.getLastName() + " " + s.getGrade(course));
@@ -92,7 +93,7 @@ public class View {
 
     }
 
-    public void printOnOneLine(String messageText){
+    public void printOnOneLine(String messageText) {
         System.out.print(messageText);
     }
 
@@ -117,7 +118,7 @@ public class View {
             System.out.println("              ▄▌         ");
             Thread.sleep(sleepAmount);
             System.out.println();
-            firstIntro=false;
+            firstIntro = false;
         } else {
             System.out.println("\n\n\n");
             System.out.println("▄▖  ▌     ▜              ");
@@ -134,7 +135,7 @@ public class View {
 
     }
 
-    public void studentFindCourses(Student student, Model model) {
+    public void studentFindCourses(Student student) {
         int index = 1;
         boolean studentHasCourse = false;
         for (Course c : model.courses) {
